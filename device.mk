@@ -143,7 +143,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/android.hardware.drm@1.3-service.widevine.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.drm@1.3-service.widevine.rc
-        
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-impl \
@@ -152,10 +152,6 @@ PRODUCT_PACKAGES += \
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software
-
-# Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -172,7 +168,6 @@ PRODUCT_PACKAGES += \
     textclassifier.bundle1
 
 PRODUCT_PACKAGES += \
-    libxml2 \
     libprotobuf-cpp-full
 
 # Net
@@ -213,7 +208,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libbauthzcommon_shim
-    
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -230,6 +225,7 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default \
     audio.usb.default \
     audio.r_submix.default \
+		audio_amplifier.universal7870\
     libtinycompress
 
 PRODUCT_COPY_FILES += \
@@ -328,7 +324,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5 \
     android.hardware.radio.config@1.2 \
-    libprotobuf-cpp-full-vendorcompat
+    libprotobuf-cpp-full-vendorcompat \
+		libprotobuf-cpp-lite-vendorcompat \
+		libxml2
 
 PRODUCT_PACKAGES += \
     libcutils_shim

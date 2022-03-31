@@ -70,7 +70,7 @@ on boot
     chmod 0664 /sys/devices/11400000.mali/dvfs_min_lock
     chown radio system /sys/devices/11400000.mali/dvfs_max_lock
     chmod 0664 /sys/devices/11400000.mali/dvfs_max_lock
-    
+
     # mif, int
     chown radio system /sys/class/devfreq/17000010.devfreq_mif/min_freq
     chmod 0664 /sys/class/devfreq/17000010.devfreq_mif/min_freq
@@ -125,7 +125,7 @@ on boot
     chmod 0660 /sys/class/android_usb/android0/functions
     chown system system /sys/class/android_usb/android0/bDeviceClass
     chmod 0660 /sys/class/android_usb/android0/bDeviceClass
-    
+
     # Permissions for System LSI NFC
     # NFC : Permissions for NFC
         chmod 0660 /dev/sec-nfc
@@ -202,14 +202,14 @@ service gpsd /vendor/bin/hw/gpsd -c /vendor/etc/gps.xml
 service charger /system/bin/charger
     class charger
     user system
-    group system graphics input 
+    group system graphics input
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
 
 # FM Radio
-    chown system audio /dev/radio0
-    chmod 0660 /dev/radio0
-    chown bluetooth bluetooth /sys/devices/bluetooth/lna_en
+#    chown system audio /dev/radio0
+#    chmod 0660 /dev/radio0
+#    chown bluetooth bluetooth /sys/devices/bluetooth/lna_en
 
 # RPMB daemon
 service rpmbd /system/bin/rpmbd

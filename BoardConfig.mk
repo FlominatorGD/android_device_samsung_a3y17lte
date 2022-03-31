@@ -84,7 +84,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Vendor separation
-TARGET_COPY_OUT_VENDOR := system/vendor
+TARGET_COPY_OUT_VENDOR := vendor
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2017 The havocOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,10 +22,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_a3y17lte
+PRODUCT_NAME := havoc_a3y17lte
 PRODUCT_DEVICE := a3y17lte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := Samsung
