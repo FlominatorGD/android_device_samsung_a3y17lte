@@ -14,15 +14,15 @@
 # limitations under the License.
 #
 
-include device/samsung/universal7880-common/BoardConfigCommon.mk
+include device/samsung/universal7870-common/BoardConfigCommon.mk
 
-LOCAL_PATH := device/samsung/a5y17lte
+LOCAL_PATH := device/samsung/a3y17lte
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
 
 # Kernel config
-TARGET_KERNEL_CONFIG := lineage-a5y17lte_defconfig
+TARGET_KERNEL_CONFIG := exynos7870-a3y17lte_defconfig
 
 # OTA
-TARGET_OTA_ASSERT_DEVICE := a5y17lte,a5y17ltecan,a5y17ltexx
+TARGET_OTA_ASSERT_DEVICE := a3y17lte,a3y17ltecan,a3y17ltexx

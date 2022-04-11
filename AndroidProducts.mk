@@ -14,4 +14,10 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_a5y17lte.mk
+    $(LOCAL_DIR)/havoc_a3y17lte.mk
+
+# add a3y17lte COMMON_LUNCH_CHOICES
+COMMON_LUNCH_CHOICES := \
+    havoc_a3y17lte-user \
+    havoc_a3y17lte-userdebug \
+		havoc_a3y17lte-eng

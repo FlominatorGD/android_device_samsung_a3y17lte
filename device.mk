@@ -14,12 +14,17 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/a5y17lte
+LOCAL_PATH := device/samsung/a3y17lte
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
 # System.prop
-TARGET_SYSTEM_PROP += device/samsung/a5y17lte/system.prop
+-include $(DEVICE_PATH)/system_prop.mk
 
 # call the common setup
-$(call inherit-product, device/samsung/universal7880-common/common.mk)
+$(call inherit-product, device/samsung/universal7870-common/common.mk)

@@ -13,4 +13,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-./../universal7880-common/setup-makefiles.sh $@
+./../universal7870-common/setup-makefiles.sh $@
