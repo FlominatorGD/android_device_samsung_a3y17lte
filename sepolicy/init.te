@@ -12,3 +12,7 @@ allow init block_device:lnk_file setattr;
 allow init tmpfs:lnk_file create_file_perms;
 
 allow init sysfs:file setattr;
+allow init hwservicemanager:binder call;
+allow init vendor_file:file execute_no_trans;
+allow init vndbinder_device:chr_file { ioctl open read write };
+

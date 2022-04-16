@@ -41,7 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.disable_backpressure=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=240 \
+    ro.sf.lcd_density=312 \
     lockscreen.rot_override=true
 
 # Disable more Codec2.0 components
@@ -51,10 +51,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # ro.product.first_api_level indicates the first api level the device has commercially launched on.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=23
-
-# Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.radio.noril=yes
 
 # Treble
 PRODUCT_PROPERTY_OVERRIDES += \

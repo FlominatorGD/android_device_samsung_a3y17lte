@@ -32,6 +32,7 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_DENSITY := 360
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
@@ -115,8 +116,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.2-service \
-    android.hardware.graphics.mapper@2.0-impl-2.1 \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl \
@@ -143,19 +144,23 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/android.hardware.drm@1.3-service.widevine.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.drm@1.3-service.widevine.rc
-        
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-impl \
     android.hardware.keymaster@4.0-service
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0-service.samsung
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service.software
 
 # Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung
+# PRODUCT_PACKAGES += \
+#    vendor.lineage.touch@1.0-service.samsung
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -185,7 +190,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/grippower.info:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/grippower.info \
     $(LOCAL_PATH)/configs/wifi/qcom_cfg.ini:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/qcom_cfg.ini \
-    $(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/WCNSS_cfg.dat
+    $(LOCAL_PATH)/configs/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_SYSTEM)/etc/firmware/wlan/WCNSS_cfg.dat \
+		$(LOCAL_PATH)/configs/wifi/indoorchannel.info:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/indoorchannel.info
 
 # WiFi
 PRODUCT_COPY_FILES += \
@@ -196,41 +202,55 @@ PRODUCT_PACKAGES += \
     hostapd \
     libqsap_sdk \
     libQWiFiSoftApCfg \
+		WifiOverlay \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf \
     wificond \
-    android.hardware.wifi@1.0-service
+    android.hardware.wifi@1.0-service \
+		android.hardware.wifi@1.0 \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-service
 
+# SamsungDoze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service.samsung
+    android.hardware.biometrics.fingerprint@2.1-service.samsung \
+		libbauthtzcommon_shim
 
 PRODUCT_PACKAGES += \
     libbauthzcommon_shim
-    
+
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio@6.0 \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.common@6.0 \
-    android.hardware.audio.common@6.0-util \
-    android.hardware.audio.effect@6.0 \
-    android.hardware.audio.effect@6.0-impl \
     android.hardware.bluetooth.audio@2.0-impl \
+    audio.bluetooth.default
+
+PRODUCT_PACKAGES += \
+    tinymix
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio.service \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.effect@6.0-impl \
+    android.hardware.audio.common-util \
+    android.hardware.audio.common@2.0-util \
+    android.hardware.audio.common@2.0 \
+    android.hardware.audio.common@6.0-util \
+    android.hardware.audio.common@6.0 \
+    audio_amplifier.universal7880_32 \
+    audio.primary.universal7880_32 \
     audio.a2dp.default \
-    audio.bluetooth.default \
     audio.usb.default \
     audio.r_submix.default \
     libtinycompress
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_gains.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_gains.xml \
@@ -277,8 +297,7 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0 \
-    android.hardware.nfc@1.1 \
+    android.hardware.nfc@1.2-service.samsung \
     libnfc-nci \
     libnfc_nci_jni \
     NfcNci \
@@ -335,16 +354,17 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl.exynos7870 \
-    android.hardware.sensors@1.0-service.exynos7870
+    android.hardware.sensors@1.0-impl.samsung \
+    android.hardware.sensors@1.0-service \
+    android.frameworks.sensorservice@1.0 \
+    libsensorndkbridge
 
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
 
-# USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.basic
+    android.hardware.usb@1.1-service.typec
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -364,10 +384,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # ADB and USB configuration (TEMP ENABLED)
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.sys.usb.config=mtp,adb \
-    ro.adb.secure=0 \
-    ro.secure=0
+# PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#    persist.sys.usb.config=mtp,adb \
+#    ro.adb.secure=0 \
+#    ro.secure=0
 
 # Offline charging
 PRODUCT_PACKAGES += \
@@ -377,11 +397,14 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+#
+#clang-r383902b missing ld executable (needed to build kernel)
+$(shell cp -r device/samsung/a3y17lte/clang/ld prebuilts/clang/host/linux-x86/clang-r383902b/bin)
 
-# Call empty .mk files in the BSP sources as an existence check for them
-$(call inherit-product, hardware/samsung_slsi/exynos/empty.mk)
-$(call inherit-product, hardware/samsung_slsi/exynos5/empty.mk)
-$(call inherit-product, hardware/samsung_slsi/exynos7870/empty.mk)
+# call Samsung LSI board support package
+$(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
+$(call inherit-product, hardware/samsung_slsi/exynos7870/exynos7870.mk)
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/a3y17lte/a3y17lte-vendor.mk)
+$(call inherit-product, vendor/samsung/universal7870-common/universal7870-common-vendor.mk)

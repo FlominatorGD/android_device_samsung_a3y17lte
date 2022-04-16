@@ -207,9 +207,9 @@ service charger /system/bin/charger
     seclabel u:r:charger:s0
 
 # FM Radio
-    chown system audio /dev/radio0
-    chmod 0660 /dev/radio0
-    chown bluetooth bluetooth /sys/devices/bluetooth/lna_en
+#    chown system audio /dev/radio0
+#    chmod 0660 /dev/radio0
+#    chown bluetooth bluetooth /sys/devices/bluetooth/lna_en
 
 # RPMB daemon
 service rpmbd /system/bin/rpmbd
